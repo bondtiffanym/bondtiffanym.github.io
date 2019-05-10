@@ -1,0 +1,111 @@
+/* Basic Styling */
+* {
+    margin: 0;
+    padding: 0;
+}
+html,body {
+    height: 100%;
+    font-family: 'Merriweather', serif;
+    scroll-behavior: smooth;
+    background-color: #f4f4f4;
+}
+a {
+    text-decoration: none !important;
+}
+button:focus {
+    outline: transparent;
+    float: right;
+}
+
+/* Reused classes throughout page */
+
+
+.sticky {
+    position: fixed;
+    top: 0;
+}
+.highlight {
+    color: #D4AF37;
+}
+.purple-text {
+    color: #610847;
+}
+.transparent {
+    background: transparent;
+    border: none;
+}
+.hover-underline {
+    transition: all 0.5s linear;
+    text-decoration: none;
+}
+.hover-underline:after {
+    display:block;
+    content: '';
+    border-bottom: solid 2px #D4AF37;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+}
+.hover-underline:hover:after { transform: scaleX(1); }
+
+.hover-grow {
+    transition: all .2s ease-in-out;
+}
+.hover-grow:hover {
+    transform: scale(1.1);
+}
+.link-highlight:hover {
+    cursor: pointer;
+    color: #FFD700 !important;
+}
+.about-link {
+    color: #343A40;
+    transition: all 0.2s linear;
+}
+.about-link:hover {
+    text-decoration: underline;
+    color: rgb(235, 200, 1);
+    cursor: pointer;
+}
+.footer-icon {
+    font-size: 2em;
+}
+
+/* Elements in page */ 
+.header {
+    background-image: linear-gradient(to bottom, #3b003e, #3e003f, #420040, #450140, #480141, #4d0242, #530344, #580545, #610847, #6b0c48, #74114a, #7d164b);
+    color: #f4f4f4;
+    font-family: 'Sawarabi Mincho', sans-serif;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+    width: 100%;
+}
+#particles-js {
+    z-index: -10;
+    height: 100vh;
+}
+#intro-wrapper {
+    margin-top: 40vh; 
+    position: absolute;
+}
+#navbar {
+    border-bottom: 3px solid #D4AF37;
+    z-index: 2;
+    width: 100%;
+}
+
+#nav-menu i {
+    font-size: 1.6em;
+}
+#profile-img {
+    border: 4px solid #610847;
+}
+
+.footer {
+    background-image: linear-gradient(to bottom, #3b003e, #3e003f, #420040, #450140, #480141, #4d0242, #530344, #580545, #610847, #6b0c48, #74114a, #7d164b);
+    color: #f4f4f4;
+    font-family: 'Sawarabi Mincho', sans-serif;
+    width: 100%;
+    bottom: 0;
+    border-top: 3px solid #D4AF37;
