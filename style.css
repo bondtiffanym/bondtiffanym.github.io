@@ -16,6 +16,10 @@ button:focus {
     outline: transparent;
     float: right;
 }
+hr {
+    width: 90%;
+    margin: 0 auto;
+}
 
 /* Reused classes throughout page */
 
