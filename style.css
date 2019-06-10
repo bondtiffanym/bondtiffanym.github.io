@@ -90,11 +90,7 @@ button:focus {
     position: absolute;
 }
 .scroll-indicator {
-    border-radius: 50%;
-    background-image: linear-gradient(to top, #9b8a2e, #a99330, #b79d32, #c5a635, #d4af37);
-    height: 3em;
-    width: 3em;
-    margin: 1em auto;
+    font-size: 2em;
 }
 #navbar {
     border-bottom: 3px solid #D4AF37;
