@@ -7,7 +7,18 @@
   --site-text-primary-color: #ffffff;
   --site-text-secondary-color: #fb6823;
   --site-text-tertiary-color: #ff9500;
-  --site-text-quaternary-color: #57b8ff;
+  --site-text-quaternary-color: #07c8f9;
+  --brand-gradient-image: linear-gradient(
+    to right,
+    var(--site-text-secondary-color) 0%,
+    var(--site-text-tertiary-color) 75%
+  );
+  --skill-gradient-image: linear-gradient(
+    165deg,
+    var(--site-text-secondary-color) 60%,
+    var(--site-text-quaternary-color) 70%
+  );
+  --skill-gradient-scroll-y: 0px;
 }
 
 html {
@@ -62,4 +73,16 @@ body {
 
 .section-scroll-target {
   scroll-margin-top: 48px;
+}
+
+@layer vuetify-final {
+  .text-gradient-brand {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    background-image: var(--brand-gradient-image);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
 }

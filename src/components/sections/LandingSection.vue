@@ -2,12 +2,12 @@
   <div
     ref="landingRef"
     id="landing"
-    class="section-scroll-target min-h-screen flex items-center justify-around"
+    class="section-scroll-target min-h-screen flex items-center justify-between gap-4 px-42"
   >
-    <div class="text-start w-1/3 animate-enter-landing-text">
+    <div class="text-start w-1/2 animate-enter-landing-text">
       <h1 class="text-6xl font-bold my-2">
         Hi! I'm
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--site-text-secondary-color)] to-[var(--site-text-tertiary-color)]">Tiffany Bond</span>
+        <span class="text-gradient-brand">Tiffany Bond</span>
       </h1>
       <h2
         class="relative inline-block text-2xl font-bold my-2"
@@ -21,10 +21,16 @@
         </span>
       </h2>
       <p class="text-lg my-2">
-        Senior software engineer focused on transforming complex ideas into intuitive, reliable products. Experienced in building customer-facing applications and developer platforms with an emphasis on scalability, maintainability, accessibility, and thoughtful user experiences.
+        Senior software engineer focused on transforming complex ideas into
+        intuitive, reliable products. Experienced in building customer-facing
+        applications and developer platforms with an emphasis on scalability,
+        maintainability, accessibility, and thoughtful user experiences.
       </p>
       <p class="text-lg my-2">
-        Driven by challenging problems, clean architecture, and software that delivers real value. Background includes IoT companion applications, plugin-based platforms, and modern web experiences built with long-term maintainability in mind.
+        Driven by challenging problems, clean architecture, and software that
+        delivers real value. Background includes IoT companion applications,
+        plugin-based platforms, and modern web experiences built with long-term
+        maintainability in mind.
       </p>
       <v-chip
         class="text-sm font-light px-4 my-3"
@@ -36,7 +42,7 @@
         </span>
       </v-chip>
     </div>
-    <div class="w-1/3 min-h-[22rem]">
+    <div class="w-1/2 min-h-[22rem]">
       <div
         class="h-full w-full"
         :class="

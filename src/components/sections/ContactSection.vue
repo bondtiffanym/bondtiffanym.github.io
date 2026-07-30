@@ -1,7 +1,7 @@
 <template>
   <div
     id="contact"
-    class="section-scroll-target h-screen flex items-center justify-center"
+    class="section-scroll-target h-screen flex flex-col justify-center"
   >
     Contact Section
   </div>

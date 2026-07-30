@@ -1,9 +1,11 @@
 <template>
   <div
     id="projects"
-    class="section-scroll-target flex h-screen items-center justify-center"
+    class="section-scroll-target h-screen flex flex-col justify-center px-42"
   >
-    Projects Section
+  <h2 class="text-2xl font-bold text-gradient-brand">
+    Projects
+</h2>
   </div>
 </template>
 

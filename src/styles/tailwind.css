@@ -9,7 +9,9 @@
 
 @layer tw-utilities {
   /* Vuetify overlay fix — keep Tailwind gradient + bg-clip-text utilities intact */
-  [class*="bg-"]:not([class*="bg-gradient"]):not([class*="bg-clip"]) {
+  [class*="bg-"]:not([class*="bg-gradient"]):not([class*="bg-clip"]):not(
+      .text-gradient-brand
+    ) {
     background-image: none !important;
     background-size: auto !important;
 
@@ -52,6 +54,37 @@
   .typewriter-cursor {
     border-right: 2px solid currentColor;
     animation: blink 1s step-end infinite;
+  }
+
+  .skill-icon {
+    display: inline-block;
+    line-height: 1;
+  }
+
+  .skill-icon::before {
+    color: transparent;
+    background-image: var(--skill-gradient-image);
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    background-attachment: fixed;
+    background-position: center top;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  @media (max-width: 768px) {
+    .skill-icon::before {
+      background-attachment: scroll;
+      background-position: center calc(0px - var(--skill-gradient-scroll-y, 0px));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skill-icon::before {
+      background-attachment: scroll;
+      background-position: center center;
+      background-size: 100% 100%;
+    }
   }
 
   .animate-enter-nav {
