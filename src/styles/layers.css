@@ -1,0 +1,8 @@
+/* 1. Define the custom layer order */
+@layer tailwind-theme, tailwind-reset, vuetify-core, vuetify-components, vuetify-overrides, vuetify-utilities, tailwind-utilities, vuetify-final;
+
+/* 2. Import Vuetify styles into their assigned layers */
+@import "vuetify/styles" layer(vuetify-core);
+
+/* 3. Import Tailwind */
+@import "tailwindcss";

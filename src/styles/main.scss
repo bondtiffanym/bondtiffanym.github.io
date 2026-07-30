@@ -1,0 +1,65 @@
+/* src/styles/main.css */
+:root {
+  --site-bg: #0a1020;
+  --site-bg-spotlight: #243044;
+  --site-bg-mid: #161e30;
+  --site-bg-edge: #080c16;
+  --site-text-primary-color: #ffffff;
+  --site-text-secondary-color: #fb6823;
+  --site-text-tertiary-color: #ff9500;
+  --site-text-quaternary-color: #57b8ff;
+}
+
+html {
+  min-height: 100%;
+  background-color: var(--site-bg-edge);
+}
+
+body {
+  min-height: 100%;
+  background-color: var(--site-bg-edge);
+}
+
+#app {
+  position: relative;
+  min-height: 100%;
+  background: transparent !important;
+}
+
+.site-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--site-bg-edge);
+  background-image: radial-gradient(
+    ellipse 90% 70% at 33% 25%,
+    var(--site-bg-spotlight) 0%,
+    var(--site-bg-mid) 42%,
+    var(--site-bg) 68%,
+    var(--site-bg-edge) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: translateZ(0);
+}
+
+.v-application {
+  position: relative;
+  z-index: 1;
+  min-height: 100%;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.v-application__wrap {
+  min-height: 100%;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.section-scroll-target {
+  scroll-margin-top: 48px;
+}

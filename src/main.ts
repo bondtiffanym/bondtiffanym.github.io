@@ -1,5 +1,7 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
+import { createApp } from "vue";
+import "./styles/main.scss";
+import App from "./App.vue";
+import vuetify from "./plugins/vuetify.ts";
+import "./styles/tailwind.css";
 
-createApp(App).mount('#app')
+createApp(App).use(vuetify).mount("#app");
