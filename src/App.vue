@@ -6,6 +6,7 @@
       <NavBar />
       <LandingSection />
       <AboutMeSection />
+      <SkillsSection />
       <ProjectsSection />
       <ReviewsSection />
       <ContactSection />
@@ -17,6 +18,7 @@
 import NavBar from "./components/NavBar.vue";
 import LandingSection from "./components/sections/LandingSection.vue";
 import AboutMeSection from "./components/sections/AboutMeSection.vue";
+import SkillsSection from "./components/sections/SkillsSection.vue";
 import ProjectsSection from "./components/sections/ProjectsSection.vue";
 import ReviewsSection from "./components/sections/ReviewsSection.vue";
 import ContactSection from "./components/sections/ContactSection.vue";

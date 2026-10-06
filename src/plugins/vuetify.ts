@@ -8,4 +8,18 @@ import "../styles/settings.scss";
 export default createVuetify({
   components,
   directives,
+  theme: {
+    defaultTheme: "portfolioDark",
+    themes: {
+      portfolioDark: {
+        dark: true,
+        colors: {
+          background: "#080c16",
+          surface: "#161e30",
+          primary: "#57b8ff",
+          secondary: "#fb6823",
+        },
+      },
+    },
+  },
 });

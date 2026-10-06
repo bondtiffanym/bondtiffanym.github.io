@@ -44,15 +44,15 @@
     </div>
     <div class="w-1/2 min-h-[22rem]">
       <div
-        class="h-full w-full"
-        :class="
-          showCubeColumnEntrance
-            ? 'animate-enter-landing-cube'
-            : 'landing-cube-column-settled'
-        "
+        class="h-full w-full landing-cube-column"
+        :class="{
+          'landing-cube-column--offscreen': !isLandingInView,
+          'animate-enter-landing-cube': showCubeColumnEntrance,
+          'landing-cube-column-settled': !showCubeColumnEntrance,
+        }"
         @animationend="onCubeColumnEntranceEnd"
       >
-        <InteractiveRubiksCube v-if="isLandingVisible" />
+        <InteractiveRubiksCube />
       </div>
     </div>
   </div>
@@ -80,17 +80,18 @@ const ghostText = computed(() =>
 
 const displayedText = ref("");
 const phraseIndex = ref(0);
-const landingRef = ref<HTMLElement | null>(null);
-const isLandingVisible = ref(true);
 const showCubeColumnEntrance = ref(true);
+const landingRef = ref<HTMLElement | null>(null);
+const isLandingInView = ref(true);
 
 const TYPE_INTERVAL_MS = 100;
+const DELETE_INTERVAL_MS = 25;
 const PAUSE_AFTER_TYPE_MS = 1500;
 const PAUSE_AFTER_DELETE_MS = 500;
 
 let cancelled = false;
 let animationTimeout: ReturnType<typeof setTimeout> | undefined;
-let visibilityObserver: IntersectionObserver | null = null;
+let landingVisibilityObserver: IntersectionObserver | null = null;
 
 function sleep(ms: number) {
   return new Promise<void>((resolve) => {
@@ -124,7 +125,7 @@ async function runTypewriterCycle() {
         return;
       }
       displayedText.value = phrase.slice(0, index);
-      await sleep(TYPE_INTERVAL_MS);
+      await sleep(DELETE_INTERVAL_MS);
     }
 
     await sleep(PAUSE_AFTER_DELETE_MS);
@@ -140,21 +141,29 @@ onMounted(() => {
 
   void runTypewriterCycle();
 
-  visibilityObserver = new IntersectionObserver(
+  landingVisibilityObserver = new IntersectionObserver(
     ([entry]) => {
-      isLandingVisible.value = entry?.isIntersecting ?? false;
+      isLandingInView.value = entry?.isIntersecting ?? false;
     },
-    { threshold: 0.15 },
+    { threshold: 0 },
   );
 
   if (landingRef.value) {
-    visibilityObserver.observe(landingRef.value);
+    landingVisibilityObserver.observe(landingRef.value);
   }
 });
 
 onUnmounted(() => {
   cancelled = true;
   clearTimeout(animationTimeout);
-  visibilityObserver?.disconnect();
+  landingVisibilityObserver?.disconnect();
 });
 </script>
+
+<style scoped>
+.landing-cube-column--offscreen {
+  visibility: hidden;
+  pointer-events: none;
+  content-visibility: hidden;
+}
+</style>

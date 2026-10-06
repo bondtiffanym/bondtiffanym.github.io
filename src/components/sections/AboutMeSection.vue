@@ -11,21 +11,11 @@
         lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
       </div>
-      <div class="w-1/2">Something something</div>
-    </div>
-    <h3 class="text-lg font-bold">Skills</h3>
-    <div class="w-full flex flex-row flex-wrap gap-2">
-      <SkillsCategoryBlock />
+      <div class="w-1/2">something something</div>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
-import SkillsCategoryBlock from "../SkillsCategoryBlock.vue";
-</script>
+<script setup lang="ts"></script>
 
-<style scoped>
-img {
-  padding: 10px;
-}
-</style>
+<style scoped></style>
