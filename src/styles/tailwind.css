@@ -8,7 +8,6 @@
 @import "tailwindcss/utilities" layer(tw-utilities);
 
 
-
 @theme {
   --font-sans: "Rubik", sans-serif;
 

@@ -148,26 +148,26 @@ $white: #FFFFFF;
 
 @mixin makeSpinningAnimation($name, $axis, $initialAngle, $stop1, $endStop1, $stop2, $endStop2) {
 	@keyframes #{$name} {
-		#{$initialAngle}% { transform: #{'rotate' + $axis + '(0deg)'}}
-		#{$stop1}% { transform: #{'rotate' + $axis + '(90deg)'} }
-		#{$endStop1}% { transform: #{'rotate' + $axis + '(90deg)'} }
-		#{$stop2}% { transform: #{'rotate' + $axis + '(360deg)'} }
-		#{$endStop2}% { transform: #{'rotate' + $axis + '(360deg)'} }
+		#{$initialAngle + '%'} { transform: rotate#{$axis}(0deg); }
+		#{$stop1 + '%'} { transform: rotate#{$axis}(90deg); }
+		#{$endStop1 + '%'} { transform: rotate#{$axis}(90deg); }
+		#{$stop2 + '%'} { transform: rotate#{$axis}(360deg); }
+		#{$endStop2 + '%'} { transform: rotate#{$axis}(360deg); }
 	}
 }
 
 @mixin makeOpaque($animNum, $startPer, $endPer) {
 	@keyframes makeOpaque#{$animNum} {
-		#{$startPer - .01}% {
+		#{( $startPer - 0.01 ) + '%'} {
 			opacity: 1;
 		}
-		#{$startPer}% {
+		#{$startPer + '%'} {
 			opacity: 0;
 		}
-		#{$endPer - .01}% {
+		#{( $endPer - 0.01 ) + '%'} {
 			opacity: 0;
 		}
-		#{$endPer}% {
+		#{$endPer + '%'} {
 			opacity: 1;
 		}
 	}

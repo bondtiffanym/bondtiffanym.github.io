@@ -1,12 +1,16 @@
 <template>
-  <v-app-bar density="comfortable" color="var(--site-bg)" class="animate-enter-nav">
+  <v-app-bar
+    density="comfortable"
+    color="var(--site-bg)"
+    class="animate-enter-nav"
+  >
     <v-spacer />
-    <nav class="flex gap-6 mr-4">
+    <nav class="flex gap-4 mr-4">
       <v-btn
         v-for="section in sections"
         :key="section.id"
         variant="text"
-        class="text-md font-normal transition-opacity"
+        class="text-md font-normal transition-opacity uppercase tracking-wider p-2"
         :class="
           activeSection === section.id
             ? 'underline underline-offset-4 text-[var(--site-text-quaternary-color)]'

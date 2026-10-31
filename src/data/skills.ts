@@ -1,21 +1,14 @@
 interface Category {
-    name: string;
-    skills: Skill[];
+  name: string;
+  skills: Skill[];
 }
 
-
-interface Icon {
-    name: string;
-    icon: string;
-    color?: string;
+export interface Skill {
+  name: string;
+  icon?: string;
+  src?: string;
+  color?: string;
 }
-
-interface SVGIcon {
-    name: string;
-    src: string;
-}
-
-type Skill = Icon | SVGIcon;
 
 export const categories: Category[] = [
     {

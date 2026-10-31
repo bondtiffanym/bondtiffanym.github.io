@@ -1,12 +1,15 @@
 <template>
   <div
     id="skills"
-    class="section-scroll-target min-h-screen flex flex-col px-42 mt-24"
+    class="section-scroll-target min-h-screen flex flex-col px-42 mt-20"
   >
     <h2 class="text-3xl font-bold">
       <span class="text-gradient-brand">Skills</span>
     </h2>
-    <v-card class="w-full p-4 mt-6 text-center">
+    <v-card
+      variant="elevated"
+      class="w-full p-4 mt-8 text-center bg-[var(--site-bg-mid)]"
+    >
       <v-card-text>
         <div v-for="category in categories" :key="category.name">
           <p class="text-xl font-semibold mt-2 mb-4">
