@@ -1,58 +1,57 @@
 <template>
   <div
     id="skills"
-    class="section-scroll-target min-h-screen flex flex-col px-42 mt-20"
+    class="section-scroll-target min-h-screen flex flex-col px-4 sm:px-8 md:px-24 xl:px-42 mt-20"
   >
     <h2 class="text-3xl font-bold">
       <span class="text-gradient-brand">Skills</span>
     </h2>
-    <v-card
-      variant="elevated"
-      class="w-full p-4 mt-8 text-center bg-[var(--site-bg-mid)]"
-    >
-      <v-card-text>
-        <div v-for="category in categories" :key="category.name">
-          <p class="text-xl font-semibold mt-2 mb-4">
-            {{ category.name }}
-          </p>
-          <div
-            class="flex flex-row flex-wrap gap-2 mb-6 items-center justify-center mx-20"
-          >
-            <v-card
+    <div class="inline-flex flex-row flex-wrap justify-left gap-4 mt-8">
+      <v-card
+        v-for="category in categories"
+        :key="category.name"
+        variant="elevated"
+        class="bg-[var(--site-bg-spotlight)] p-2 xs:w-full md:w-[calc(50%-1rem)] xl:w-[calc(33%-1rem)]"
+      >
+        <v-card-title class="text-2xl font-semibold mt-2 mb-4 text-center">
+          {{ category.name }}
+        </v-card-title>
+        <v-divider class="mb-4 w-3/4 mx-auto" />
+        <v-card-text>
+          <div class="flex flex-row flex-wrap gap-2 p-4">
+            <v-chip
               v-for="skill in category.skills"
               :key="skill.name"
-              class="w-40 h-40 p-4 flex items-center justify-center bg-[var(--site-bg-spotlight)]"
               label
+              class="py-6 px-2"
+              size="large"
               density="comfortable"
-              variant="elevated"
-              :elevation="24"
+              variant="tonal"
             >
-              <v-card-text class="flex flex-col gap-3 items-center text-md">
-                <div class="bg-white rounded-md p-2">
-                  <v-icon
-                    v-if="skill.icon"
-                    :class="[
-                      skill.icon,
-                      skill.color && `text-[${skill.color}]`,
-                    ]"
-                    class="text-6xl text-[var(--site-text-primary-color)]"
-                    aria-hidden="true"
-                  />
-                  <img
-                    v-if="skill.src"
-                    :src="skill.src"
-                    height="60"
-                    width="60"
-                    :alt="skill.name"
-                  />
-                </div>
-                <div class="font-semibold">{{ skill.name }}</div>
-              </v-card-text>
-            </v-card>
+              <template #prepend>
+                <v-icon
+                  v-if="skill.icon"
+                  :class="[skill.class, skill.icon]"
+                  class="text-[var(--site-text-primary-color)] mr-2"
+                  aria-hidden="true"
+                  :size="30"
+                />
+                <v-img
+                  v-if="skill.src"
+                  :src="skill.src"
+                  height="30"
+                  width="30"
+                  :alt="skill.name"
+                  class="mr-2 p-1"
+                  :class="[skill.class]"
+                />
+              </template>
+              <div class="font-semibold">{{ skill.name }}</div>
+            </v-chip>
           </div>
-        </div>
-      </v-card-text>
-    </v-card>
+        </v-card-text>
+      </v-card>
+    </div>
   </div>
 </template>
 

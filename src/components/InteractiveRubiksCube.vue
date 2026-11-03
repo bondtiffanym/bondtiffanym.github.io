@@ -41,8 +41,8 @@ import { onMounted, onUnmounted, ref } from "vue";
 const faces = ["left", "right", "top", "bottom", "back", "front"] as const;
 const anchorIndexes = [3, 2, 1, 0];
 const stickerColors = [
-    "green",
-    "blue",
+  "green",
+  "blue",
   "white",
   "yellow",
   "orange",
@@ -55,7 +55,9 @@ const sceneRef = ref<HTMLElement | null>(null);
 const pivotRef = ref<HTMLElement | null>(null);
 const cubeRef = ref<HTMLElement | null>(null);
 const guideRef = ref<HTMLElement | null>(null);
-const pieceRefs = ref<(HTMLElement | null)[]>(Array.from({ length: 26 }, () => null));
+const pieceRefs = ref<(HTMLElement | null)[]>(
+  Array.from({ length: 26 }, () => null),
+);
 const pivotTransform = ref("rotateX(-35deg) rotateY(-135deg)");
 
 function setPieceRef(el: unknown, index: number) {
@@ -64,10 +66,11 @@ function setPieceRef(el: unknown, index: number) {
 
 function mx(i: number, j: number): number {
   return (
-    [2, 4, 3, 5][j % 4 | 0] +
-    (i % 2) * (((j | 0) % 4) * 2 + 3) +
-    2 * ((i / 2) | 0)
-  ) % 6;
+    ([2, 4, 3, 5][(j % 4) | 0] +
+      (i % 2) * (((j | 0) % 4) * 2 + 3) +
+      2 * ((i / 2) | 0)) %
+    6
+  );
 }
 
 function getAxis(face: number): Axis {
@@ -75,7 +78,9 @@ function getAxis(face: number): Axis {
 }
 
 function getPieces(): HTMLElement[] {
-  return pieceRefs.value.filter((piece): piece is HTMLElement => piece !== null);
+  return pieceRefs.value.filter(
+    (piece): piece is HTMLElement => piece !== null,
+  );
 }
 
 function assembleCube() {
@@ -90,7 +95,7 @@ function assembleCube() {
     const sticker = document.createElement("div");
     sticker.setAttribute("class", `sticker ${stickerColors[face]}`);
     element.appendChild(sticker);
-    return `translate${getAxis(face)}(${face % 2 * 4 - 2}em)`;
+    return `translate${getAxis(face)}(${(face % 2) * 4 - 2}em)`;
   }
 
   for (let i = 0; i < 26; i++) {
@@ -112,9 +117,7 @@ function assembleCube() {
 
 function getPieceBy(face: number, index: number, corner: number): HTMLElement {
   const pieceId =
-    (1 << face) +
-    (1 << mx(face, index)) +
-    (1 << mx(face, index + 1)) * corner;
+    (1 << face) + (1 << mx(face, index)) + (1 << mx(face, index + 1)) * corner;
   const piece = document.getElementById(`piece${pieceId}`);
 
   if (!piece) {
@@ -132,8 +135,10 @@ function swapPieces(face: number, times: number) {
     for (let j = 0; j < 5; j++) {
       const faceIndex1 = j < 4 ? mx(face, j) : face;
       const faceIndex2 = j < 4 ? mx(face, j + 1) : face;
-      const sticker1 = piece1.children[faceIndex1].firstChild as HTMLElement | null;
-      const sticker2 = piece2.children[faceIndex2].firstChild as HTMLElement | null;
+      const sticker1 = piece1.children[faceIndex1]
+        .firstChild as HTMLElement | null;
+      const sticker2 = piece2.children[faceIndex2]
+        .firstChild as HTMLElement | null;
       const className = sticker1?.className ?? "";
 
       if (className && sticker1 && sticker2) {
@@ -146,7 +151,7 @@ function swapPieces(face: number, times: number) {
 
 function animateRotation(face: number, cw: boolean, currentTime: number) {
   const pieces = getPieces();
-  const k = 0.3 * (face % 2 * 2 - 1) * (2 * Number(cw) - 1);
+  const k = 0.3 * ((face % 2) * 2 - 1) * (2 * Number(cw) - 1);
   const qubes = Array.from({ length: 9 }, (_, index) =>
     index ? getPieceBy(face, index / 2, index % 2) : pieces[face],
   );
@@ -156,7 +161,10 @@ function animateRotation(face: number, cw: boolean, currentTime: number) {
     const style = `rotate${getAxis(face)}(${k * passed * Number(passed < 300)}deg)`;
 
     qubes.forEach((piece) => {
-      piece.style.transform = piece.style.transform.replace(/rotate.\([^)]+\)/, style);
+      piece.style.transform = piece.style.transform.replace(
+        /rotate.\([^)]+\)/,
+        style,
+      );
     });
 
     if (passed >= 300) {
@@ -184,7 +192,9 @@ function onMouseDown(mdEvent: MouseEvent) {
     return;
   }
 
-  const startXY = pivotTransform.value.match(/-?\d+\.?\d*/g)?.map(Number) ?? [0, 0];
+  const startXY = pivotTransform.value.match(/-?\d+\.?\d*/g)?.map(Number) ?? [
+    0, 0,
+  ];
   const target = mdEvent.target as HTMLElement | null;
   const element = target?.closest(".element") as HTMLElement | null;
   const faceContainer = (element ?? cube).parentElement;
@@ -203,7 +213,8 @@ function onMouseDown(mdEvent: MouseEvent) {
         const anchorIndex = Number(gid[0]);
         const adjacentFace = mx(face, anchorIndex + 3);
         const clockwise = (
-          element.parentElement?.children[adjacentFace] as HTMLElement | undefined
+          element.parentElement?.children[adjacentFace] as
+            HTMLElement | undefined
         )?.hasChildNodes();
         animateRotation(
           mx(face, anchorIndex + 1 + 2 * Number(clockwise)),
@@ -254,12 +265,36 @@ $sticker-size: 95%;
 $rounded: 10%;
 $cube-scale: 2.5;
 $faces: (
-  left: (0, -90, 180),
-  right: (0, 90, 90),
-  back: (0, 180, -90),
-  front: (0, 0, 0),
-  bottom: (-90, 0, -90),
-  top: (90, 0, 180),
+  left: (
+    0,
+    -90,
+    180,
+  ),
+  right: (
+    0,
+    90,
+    90,
+  ),
+  back: (
+    0,
+    180,
+    -90,
+  ),
+  front: (
+    0,
+    0,
+    0,
+  ),
+  bottom: (
+    -90,
+    0,
+    -90,
+  ),
+  top: (
+    90,
+    0,
+    180,
+  ),
 );
 $colors: (
   blue: #001ca8,
@@ -269,7 +304,6 @@ $colors: (
   orange: #ff5000,
   red: #df0500,
 );
-
 
 .centered {
   position: absolute;
@@ -327,8 +361,10 @@ $colors: (
 
       @each $face, $angles in $faces {
         &.#{$face} {
-          transform: rotateX(#{nth($angles, 1)}deg) rotateY(#{nth($angles, 2)}deg)
-            rotateZ(#{nth($angles, 3)}deg) translateZ($element-size / 2);
+          transform: rotateX(#{nth($angles, 1)}deg)
+            rotateY(#{nth($angles, 2)}deg)
+            rotateZ(#{nth($angles, 3)}deg)
+            translateZ($element-size / 2);
         }
       }
 

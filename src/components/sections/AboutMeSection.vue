@@ -1,35 +1,42 @@
 <template>
   <div
     id="about"
-    class="section-scroll-target h-screen flex flex-col px-42 mt-24"
+    class="section-scroll-target min-h-screen flex flex-col px-4 sm:px-8 md:px-24 xl:px-42 mt-24"
   >
     <h2 class="text-3xl font-bold">
       <span class="text-gradient-brand">About Me</span>
     </h2>
-    <div class="flex gap-12 text-lg my-4">
-      <div class="w-1/2">
+    <div class="flex flex-col xl:flex-row gap-12 text-lg my-4">
+      <div class="w-full xl:w-1/2">
         <p class="my-2">
           I'm a self-taught senior software engineer passionate about turning
-          ideas into thoughtfully designed, maintainable software. Since
-          starting my career in 2020, I've worked across e-commerce, education
-          technology, and digital publishing, building products with a focus on
-          usability, accessibility, and extensibility.
+          ideas into
+          <span class="text-[var(--site-text-highlight-color)]"
+            >thoughtfully designed, maintainable software</span
+          >. Since starting my career in 2020, I've worked across e-commerce,
+          education technology, and digital publishing, building products with a
+          focus on usability, accessibility, and extensibility.
         </p>
         <p class="my-2">
           I thrive on product development, from shaping initial ideas to
-          designing modular, reusable systems that evolve with changing needs.
-          At People Inc, I've helped shape the architecture of our in-house
-          content management system as it transitioned to a flexible,
-          plugin-based platform. I've also developed deep expertise in Vue,
-          TipTap, and ProseMirror, becoming a trusted resource for technical
-          troubleshooting and architectural decisions.
+          designing
+          <span class="text-[var(--site-text-highlight-color)]"
+            >modular, reusable systems</span
+          >
+          that evolve with changing needs. At People Inc, I've helped shape the
+          architecture of our in-house content management system as it
+          transitioned to a flexible, plugin-based platform. I've also developed
+          deep expertise in Vue, TipTap, and ProseMirror, becoming a trusted
+          resource for technical troubleshooting and architectural decisions.
         </p>
         <p class="my-2">
           Previously, at Exec Online, I championed accessibility across my
           engineering team, working toward WCAG 2.0 AA compliance in
           collaboration with an accessibility audit team. That experience
-          reinforced my belief that thoughtful engineering means building
-          software that works well for everyone.
+          reinforced my belief that thoughtful engineering means
+          <span class="text-[var(--site-text-highlight-color)]"
+            >building software that works well for everyone</span
+          >.
         </p>
         <p class="my-2">
           Being self-taught has strengthened my ability to learn quickly, adapt
@@ -38,7 +45,7 @@
           to every product I help build.
         </p>
       </div>
-      <div class="w-1/3 mx-auto">
+      <div class="w-full xl:w-1/3 mx-auto">
         <v-card class="bg-[var(--site-bg-spotlight)] about-sidebar-card">
           <v-card-item>
             <v-card-title class="text-2xl">Recruiter Snapshot</v-card-title>

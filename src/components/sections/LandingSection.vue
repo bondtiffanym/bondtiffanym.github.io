@@ -2,9 +2,9 @@
   <div
     ref="landingRef"
     id="landing"
-    class="section-scroll-target min-h-screen flex items-center justify-between gap-4 px-42"
+    class="section-scroll-target min-h-screen flex items-center justify-between gap-4 px-4 sm:px-8 md:px-24 xl:px-42"
   >
-    <div class="text-start w-1/2 animate-enter-landing-text">
+    <div class="text-start w-full xl:w-1/2 animate-enter-landing-text">
       <h1 class="text-6xl font-bold my-2">
         Hi! I'm
         <span class="text-gradient-brand">Tiffany Bond</span>
@@ -23,8 +23,10 @@
       <p class="text-lg my-2">
         Senior software engineer focused on transforming complex ideas into
         intuitive, reliable products. Experienced in building customer-facing
-        applications and developer platforms with an emphasis on scalability,
-        maintainability, accessibility, and thoughtful user experiences.
+        applications and developer platforms with an emphasis on
+        <span class="text-[var(--site-text-highlight-color)]"
+          >scalability, maintainability, accessibility</span
+        >, and thoughtful user experiences.
       </p>
       <p class="text-lg my-2">
         Driven by challenging problems, clean architecture, and software that
@@ -42,7 +44,7 @@
         </span>
       </v-chip>
     </div>
-    <div class="w-1/2 min-h-[22rem]">
+    <div class="hidden xl:block w-1/2 min-h-[22rem]">
       <div
         class="h-full w-full landing-cube-column"
         :class="{

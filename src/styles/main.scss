@@ -8,12 +8,15 @@
   --site-text-secondary-color: #fb6823;
   --site-text-tertiary-color: #ff9500;
   --site-text-quaternary-color: #07c8f9;
+  --site-text-highlight-color: #ff9500;
 
-  --site-background-gradient-image: radial-gradient(ellipse 90% 70% at 33% 25%,
+  --site-background-gradient-image: radial-gradient(
+    ellipse 90% 70% at 33% 25%,
     var(--site-bg-spotlight) 0%,
     var(--site-bg-mid) 42%,
     var(--site-bg) 68%,
-    var(--site-bg-edge) 100%);
+    var(--site-bg-edge) 100%
+  );
 
   --brand-gradient-image: linear-gradient(
     to right,
