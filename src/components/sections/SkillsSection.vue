@@ -11,7 +11,7 @@
         v-for="category in categories"
         :key="category.name"
         variant="elevated"
-        class="bg-[var(--site-bg-spotlight)] p-2 xs:w-full md:w-[calc(50%-1rem)] xl:w-[calc(33%-1rem)]"
+        class="bg-[var(--site-bg-spotlight)] p-2 w-full lg:w-[calc(50%-1rem)] xl:w-[calc(33%-1rem)]"
       >
         <v-card-title class="text-2xl font-semibold mt-2 mb-4 text-center">
           {{ category.name }}
@@ -23,7 +23,7 @@
               v-for="skill in category.skills"
               :key="skill.name"
               label
-              class="py-6 px-2"
+              class="py-6 px-2 opacity-80 hover:opacity-100 transition-opacity duration-300"
               size="large"
               density="comfortable"
               variant="tonal"

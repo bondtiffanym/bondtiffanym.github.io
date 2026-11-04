@@ -1,21 +1,32 @@
 <template>
-  <div
-    id="reviews"
-    class="section-scroll-target min-h-screen flex flex-col justify-center px-4 sm:px-8 md:px-24 xl:px-42"
-  >
-    <h2 class="text-3xl font-bold">
-      <span class="text-gradient-brand">Reviews</span>
-    </h2>
-    <v-carousel hide-delimiters height="auto" class="reviews-carousel mt-8">
+  <v-card class="bg-[var(--site-bg-spotlight)] px-4 py-12 xl:max-w-2/3">
+    <v-carousel hide-delimiters height="auto" class="reviews-carousel">
+      <template v-slot:prev="{ props }">
+        <v-icon-btn
+          icon="mdi-chevron-left"
+          size="large"
+          @click="props.onClick"
+        />
+      </template>
+      <template v-slot:next="{ props }">
+        <v-icon-btn
+          icon="mdi-chevron-right"
+          size="large"
+          @click="props.onClick"
+        />
+      </template>
       <v-carousel-item v-for="(review, index) in reviews" :key="index">
-        <v-card
-          class="review-card bg-[var(--site-bg-spotlight)] p-4 sm:p-8 md:p-12"
-        >
-          <v-card-text class="text-lg">
+        <div class="review-card px-4">
+          <v-icon
+            icon="mdi-format-quote-open"
+            size="40"
+            class="mb-4 ml-[-2rem]"
+          />
+          <div class="text-lg">
             <p class="whitespace-pre-line">
               {{ review.review }}
             </p>
-          </v-card-text>
+          </div>
           <div class="flex justify-end mt-2">
             <p
               v-if="review.author"
@@ -25,14 +36,14 @@
               <span v-if="review.company"> @ {{ review.company }}</span>
             </p>
           </div>
-        </v-card>
+        </div>
       </v-carousel-item>
     </v-carousel>
-  </div>
+  </v-card>
 </template>
 
 <script setup lang="ts">
-import { reviews } from "../../data/reviews";
+import { reviews } from "../data/reviews";
 </script>
 
 <style scoped>

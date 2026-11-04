@@ -1,15 +1,17 @@
 <template>
-  <v-card class="p-6 flex flex-col mx-4 bg-[var(--site-bg-spotlight)]">
-    <v-card-title class="flex justify-between">
-      <div class="flex gap-4">
+  <v-card
+    class="job-card min-w-0 max-w-full p-4 sm:p-6 flex flex-col mx-2 sm:mx-4 bg-[var(--site-bg-spotlight)]"
+  >
+    <v-card-title class="flex justify-between gap-x-4 gap-y-1">
+      <div class="flex gap-4 min-w-0">
         <v-img
           :src="companyLogo"
           :alt="`${job.company} Logo`"
-          class="w-18 h-18 rounded"
+          class="w-14 h-14 sm:w-18 sm:h-18 shrink-0 rounded"
         />
-        <div>
-          <div class="flex items-center gap-4">
-            <span class="text-3xl font-bold">{{ job.company }}</span>
+        <div class="min-w-0">
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <span class="text-2xl sm:text-3xl font-bold">{{ job.company }}</span>
             <v-chip
               v-if="job.current"
               class="text-sm font-light px-4 gap-1"
@@ -33,7 +35,7 @@
     <v-card-text class="mt-4 text-base">
       <p class="text-base">{{ job.description }}</p>
       <p class="text-medium font-bold mt-4">Key Contributions:</p>
-      <ul class="list-disc list-inside ml-12">
+      <ul class="list-disc list-inside ml-4 sm:ml-8">
         <li v-for="contribution in job.contributions" :key="contribution">
           {{ contribution }}
         </li>
@@ -66,4 +68,10 @@ const companyLogo = computed(() => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.job-card :deep(.v-card-title) {
+  white-space: normal;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+</style>

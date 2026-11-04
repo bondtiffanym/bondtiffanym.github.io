@@ -7,6 +7,7 @@
     <div class="text-start w-full xl:w-1/2 animate-enter-landing-text">
       <h1 class="text-6xl font-bold my-2">
         Hi! I'm
+        <br v-if="smAndDown" />
         <span class="text-gradient-brand">Tiffany Bond</span>
       </h1>
       <h2
@@ -62,7 +63,10 @@
 
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from "vue";
+import { useDisplay } from "vuetify";
 import InteractiveRubiksCube from "../InteractiveRubiksCube.vue";
+
+const { smAndDown } = useDisplay();
 
 const subtitles = [
   "Full-Stack Software Engineer",
