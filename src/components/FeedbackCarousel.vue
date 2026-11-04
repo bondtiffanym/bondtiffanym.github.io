@@ -1,5 +1,5 @@
 <template>
-  <v-card class="bg-[var(--site-bg-spotlight)] px-4 py-12 xl:max-w-2/3">
+  <v-card class="bg-[var(--site-bg-spotlight)] xl:px-4 py-12 xl:max-w-2/3">
     <v-carousel hide-delimiters height="auto" class="reviews-carousel">
       <template v-slot:prev="{ props }">
         <v-icon-btn

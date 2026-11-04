@@ -1,5 +1,4 @@
 <template>
-  <v-divider thickness="2" />
   <div
     id="contact"
     class="section-scroll-target flex flex-col px-4 sm:px-8 md:px-24 xl:px-42 my-24"
@@ -9,10 +8,10 @@
     </h2>
     <v-card
       variant="elevated"
-      class="p-8 lg:p-12 bg-[var(--site-bg-mid)] mt-8 lg:mt-16"
+      class="p-4 lg:p-12 bg-[var(--site-bg-mid)] mt-8 lg:mt-16"
     >
       <div class="flex flex-col lg:flex-row justify-between w-full">
-        <div class="flex flex-row lg:flex-col gap-16 lg:gap-4 w-full lg:w-1/2">
+        <div class="flex flex-col gap-8 lg:gap-4 w-full lg:w-1/2">
           <!-- contact info -->
           <div class="flex flex-col gap-4">
             <p class="text-xl font-bold">Contact Info</p>
