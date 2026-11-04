@@ -1,7 +1,7 @@
 <template>
   <div
     id="skills"
-    class="section-scroll-target min-h-screen flex flex-col px-4 sm:px-8 md:px-24 xl:px-42 mt-20"
+    class="section-scroll-target flex flex-col px-4 sm:px-8 md:px-24 xl:px-42 mt-24"
   >
     <h2 class="text-3xl font-bold">
       <span class="text-gradient-brand">Skills</span>
