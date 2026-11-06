@@ -108,8 +108,29 @@
               v-model="message"
               required
               :rules="[required]"
-              class="mb-2"
             />
+            <v-checkbox
+              v-model="consent"
+              class="privacy-consent mb-4"
+              color="secondary"
+              density="compact"
+              hide-details="auto"
+              :rules="[consentRequired]"
+            >
+              <template #label>
+                <span class="text-sm font-light ml-2">
+                  I have read and agree to the
+                  <button
+                    type="button"
+                    class="privacy-link"
+                    aria-haspopup="dialog"
+                    @click.stop.prevent="openPrivacy"
+                  >
+                    privacy policy
+                  </button>
+                </span>
+              </template>
+            </v-checkbox>
             <v-btn
               variant="outlined"
               rounded="sm"
@@ -138,18 +159,27 @@
   </div>
   <v-divider thickness="2" />
   <div class="flex my-4">
-    <!-- copyright -->
-    <div class="flex w-full justify-center">
-      <p class="text-sm font-light text-gray-400">
+    <div class="flex w-full justify-center px-4 flex-wrap">
+      <p class="text-sm font-light text-gray-400 text-center">
         Developed with &#9825; by Tiffany Bond. &copy;
         {{ new Date().getFullYear() }}. All rights reserved.
+        <button
+          type="button"
+          class="privacy-link ml-2"
+          aria-haspopup="dialog"
+          @click="openPrivacy"
+        >
+          Privacy
+        </button>
       </p>
     </div>
   </div>
+  <PrivacyPolicyDialog ref="privacyDialog" />
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
+import PrivacyPolicyDialog from "../PrivacyPolicyDialog.vue";
 
 type ContactForm = {
   validate: () => Promise<{
@@ -165,7 +195,15 @@ const formRef = ref<ContactForm | null>(null);
 const name = ref("");
 const email = ref("");
 const message = ref("");
+const consent = ref(false);
 const result = ref<"Success" | "Error" | null>(null);
+const privacyDialog = ref<InstanceType<typeof PrivacyPolicyDialog> | null>(
+  null,
+);
+
+const openPrivacy = () => {
+  privacyDialog.value?.open();
+};
 
 const contactInfo = [
   {
@@ -206,6 +244,9 @@ const required = (value: string) => {
   return "This field is required.";
 };
 
+const consentRequired = (value: boolean | null) =>
+  value === true || "Please agree to the privacy policy.";
+
 const emailRules = [
   required,
   (value: string) => {
@@ -216,11 +257,14 @@ const emailRules = [
 ];
 
 const handleSubmit = async () => {
+  result.value = null;
   if (!formRef.value) {
     result.value = "Error";
     throw new Error("Form reference is not set");
   }
-  if (!formRef.value.isValid) return;
+
+  const { valid } = await formRef.value.validate();
+  if (!valid) return;
 
   try {
     await sendMessage();
@@ -272,5 +316,31 @@ const sendMessage = async () => {
 }
 .contact-form :deep(textarea) {
   resize: none;
+}
+
+.privacy-link {
+  color: var(--site-text-quaternary-color);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.privacy-consent :deep(.v-selection-control) {
+  --v-selection-control-size: 16px;
+  min-height: 0;
+}
+
+.privacy-consent :deep(.v-selection-control__input > .v-icon) {
+  font-size: 16px;
+}
+
+.privacy-consent :deep(.v-label),
+.privacy-consent :deep(.v-selection-control--error .v-label) {
+  opacity: 1;
+  color: var(--site-text-primary-color);
 }
 </style>
